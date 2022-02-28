@@ -105,6 +105,6 @@ public class Tests
 
         Assert.AreEqual(expectedCount, _people.Count, "Delete error!!!");
 
-        CollectionAssert.DoesNotContain(_people, personId, "Delete error!!!");
+        CollectionAssert.DoesNotContain(_people, person, "Delete error!!!");
     }
 }

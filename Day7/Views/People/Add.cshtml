@@ -1,0 +1,78 @@
+@model Day7.Models.PersonModel;
+
+@{
+    ViewData["Title"] = "Add new person";
+}
+<h1>Add new person</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Add">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mt-2">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control">
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="Gender" class="control-label"></label>
+                <select name="Gender" id="Gender" style="width: 100%; padding: 6px 12px;"><br>
+                    <option value="None" selected>Please select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control">
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" type="number">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="BirthPlace" class="control-label"></label>
+                <input asp-for="BirthPlace" class="form-control">
+                <span asp-validation-for="BirthPlace" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="IsGraduated" class="control-label">Have You Graduated?</label>
+                <div class="form-check" style="padding: 6px 12px;">
+                    <input type="radio" id="Yes" value="Yes" name="IsGraduated">
+                    <label for="Yes">Yes</label>
+                    <input type="radio" id="No" value="No" name="IsGraduated">
+                    <label for="No">No</label>
+                </div>
+                <span asp-validation-for="IsGraduated" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <button type="submit" value="Add" class="btn btn-primary" style="width: 35%;">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="padding-top: 10px">
+    @Html.ActionLink("Back to list", "Index")
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

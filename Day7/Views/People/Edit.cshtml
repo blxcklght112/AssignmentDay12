@@ -1,0 +1,87 @@
+@model Day7.Models.PersonModel;
+
+@{
+    ViewData["Title"] = "Edit person";
+}
+
+<h1>Edit person</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="Gender" class="control-label"></label>
+                <select name="Gender" id="Gender" style="width: 100%; padding: 6px 12px;">
+                    <option value="None">Please select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control">
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" type="number">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="BirthPlace" class="control-label"></label>
+                <input asp-for="BirthPlace" class="form-control">
+                <span asp-validation-for="BirthPlace" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <label asp-for="IsGraduated" class="control-label">Have You Graduated?</label>
+                <div class="form-check" style="padding: 6px 12px;">
+                    <input type="radio" id="Yes" value="Yes" name="IsGraduated">
+                    <label for="Yes">Yes</label>
+                    <input type="radio" id="No" value="No" name="IsGraduated">
+                    <label for="No">No</label>
+                </div>
+                <span asp-validation-for="IsGraduated" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" value="Edit" class="btn btn-success" style="width: 35%;">Edit</button>
+            </div>
+        </form>
+        <form asp-action="Delete">
+            @Html.HiddenFor(model => model.ID)
+            <div class="form-group">
+                <button type="submit" value="@Model.ID" class="btn btn-danger mt-2" style="width: 35%;">Delete</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div style="padding-top: 10px">
+    @Html.ActionLink("Back to list", "Index")
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

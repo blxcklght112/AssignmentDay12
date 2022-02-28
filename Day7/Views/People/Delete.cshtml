@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Delete Confirmation";
+    
+    var deletedPersonName = (string)ViewBag.DeletedPersonName;
+}
+
+<h1>Person <strong>@deletedPersonName</strong> was removed from the list successfully!”</h1>
+
+<div style="padding-top: 10px">
+    @Html.ActionLink("Back to list", "Index")
+</div>
